@@ -2,9 +2,12 @@ package com.mvc.fraudmanagement.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -16,6 +19,7 @@ import com.mvc.fraudmanagement.services.PersonnelService;
 import com.mvc.fraudmanagement.services.UserService;
 import com.mvc.fraudmanagement.entities.Personnel;
 import com.mvc.fraudmanagement.entities.User;
+import com.mvc.fraudmanagement.repos.AdminRepository;
 
 @Controller
 @SessionAttributes({"admin","unApprovedFraudPersonnel","unApprovedUser"})
@@ -29,10 +33,31 @@ public class AdminController {
 	
 	@Autowired
 	private AdminService adminService;
+
+	@Autowired
+	private AdminRepository adminRepository;
 	
 	@RequestMapping(value="/admin-login", method = RequestMethod.GET)
 	public String showAdminLoginPage() {
 		return "login-forms/admin-login";
+	}
+
+	@RequestMapping(value="/admin-registration", method = RequestMethod.GET)
+	public String showAdminRegistrationPage(ModelMap model) {
+		model.addAttribute("admin",new Admin());
+		return "registration-forms/admin-registration";
+	}
+
+	@RequestMapping(value = "/admin-registration", method = RequestMethod.POST)
+	public String saveAdminDetails(ModelMap model,@Valid Admin admin,BindingResult result) {
+
+		if (result.hasErrors()) {
+			return "registration-forms/admin-registration";
+		}
+		
+		adminRepository.save(admin);
+		
+		return "redirect:/admin-login";
 	}
 	
 	@RequestMapping(value="/admin-login", method = RequestMethod.POST)
@@ -46,7 +71,7 @@ public class AdminController {
 			return "login-forms/admin-login";
 		}
 		
-		model.put("admin", new Admin(userId,password));
+		model.put("admin", new Admin());
 		
 		return "dashboards/admin-dashboard";
 	}

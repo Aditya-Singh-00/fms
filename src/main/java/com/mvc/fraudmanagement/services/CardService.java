@@ -12,6 +12,7 @@ import com.mvc.fraudmanagement.repos.CardRepository;
 @Service
 public class CardService {
 	private List<Card> cardList = new ArrayList<>();
+	
 	@Autowired
 	public CardRepository cardRepository;
 

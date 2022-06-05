@@ -19,7 +19,7 @@
 </nav>
 <h1 class="text-center">Register as Admin</h1>
 <div class="container">
-	<form:form method="post" modelAttribute="claimOfficer">
+	<form:form method="post" modelAttribute="admin">
 		<fieldset class="form-group">
 			<form:label path="firstName">First Name</form:label>
 			<form:input class="form-control" type="text" path="firstName"
@@ -33,10 +33,10 @@
 			<form:errors path="lastName" cssClass="text-warning" />
 		</fieldset>
 		<fieldset class="form-group">
-			<form:label path="dOB">Date of Birth</form:label>
-			<form:input path="dOB" type="text" class="form-control"
+			<form:label path="dob">Date of Birth</form:label>
+			<form:input path="dob" type="text" class="form-control"
 				placeholder="Your Date of Birth" required="true" />
-			<form:errors path="dOB" cssClass="text-warning" />
+			<form:errors path="dob" cssClass="text-warning" />
 		</fieldset>
 		<fieldset class="form-group">
 			<form:label path="gender">Gender</form:label>
@@ -55,28 +55,19 @@
 			<form:errors path="contact" cssClass="text-warning" />
 		</fieldset>
 		<fieldset class="form-group">
-			<form:label path="bankName">Email ID</form:label>
-			<form:input class="form-control" type="email" path="bankName"
-				placeholder="Enter Bank Name" required="true" />
-			<form:errors path="bankName" cssClass="text-warning" />
+			<form:label path="userId">User Id</form:label>
+			<form:input class="form-control" type="text" path="userId"
+				placeholder="Enter your userId" required="true" />
+			<form:errors path="userId" cssClass="text-warning" />
 		</fieldset>
+		
 		<fieldset class="form-group">
-			<form:label path="bankBranch">User ID</form:label>
-			<form:input class="form-control" type="text" path="bankBranch"
-				placeholder="Enter Bank's Branch Name" required="true" />
-			<form:errors path="bankBranch" cssClass="text-warning" />
+			<form:label path="password">Password</form:label>
+			<form:input class="form-control" type="text" path="password"
+				placeholder="Enter your password" required="true" />
+			<form:errors path="Password" cssClass="text-warning" />
 		</fieldset>
-		<fieldset class="form-group">
-			<form:label path="addLine1">Password</form:label>
-			<form:input class="form-control" type="password" path="addLine1"
-				placeholder="Enter Your Address line 1" required="true" />
-			<form:errors path="addLine1" cssClass="text-warning" />
-		</fieldset>
-		<fieldset class="form-group">
-			<form:label path="addLine2">Confirm Password</form:label>
-			<form:input class="form-control" type="password" path="addLine2"
-				placeholder="Enter Your Address line 2 (Optional)" />
-		</fieldset>
+
 		<button class="btn btn-success" type="submit">Submit</button>
 	</form:form>
 	<div>
