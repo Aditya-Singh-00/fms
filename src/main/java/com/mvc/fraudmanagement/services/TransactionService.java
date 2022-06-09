@@ -2,22 +2,25 @@ package com.mvc.fraudmanagement.services;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import com.mvc.fraudmanagement.entities.Card;
 import com.mvc.fraudmanagement.entities.Transaction;
 import com.mvc.fraudmanagement.repos.TransactionRepository;
 
 @Service
 public class TransactionService {
+
     private List<Transaction> transactionList = new ArrayList<>();
+
     @Autowired
     public TransactionRepository transactionRepository;
 
     public void getAllTransaction() {
         transactionList = transactionRepository.findAll();
+    }
+
+    public void save(Transaction transaction) {
+        transactionRepository.save(transaction);
     }
 
     public Transaction getTransactionById(int id) {
@@ -45,16 +48,6 @@ public class TransactionService {
         }
         return transactions;
     }
-
-//    public Transaction getTransactionByUserId(String id) {
-//        getAllTransaction();
-//        for (Transaction transaction : transactionList) {
-//            if (transaction.getUserId().equals(id)) {
-//                return transaction;
-//            }
-//        }
-//        return null;
-//    }
     
     public Transaction getTransactionByUserId(String id) {
 		getAllTransaction();

@@ -53,12 +53,8 @@ private String password;
 @Column(nullable = true)
 private int isAuthorized=1;
 
-
-
-
 public Personnel() {
     super();
-    // TODO Auto-generated constructor stub
 }
 
 

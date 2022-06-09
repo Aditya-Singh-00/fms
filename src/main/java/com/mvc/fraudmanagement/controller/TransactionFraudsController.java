@@ -4,16 +4,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
-
 import com.mvc.fraudmanagement.entities.Transaction;
-//import com.mvc.fraudmanagement.entities.User;
-import com.mvc.fraudmanagement.repos.TransactionRepository;
 import com.mvc.fraudmanagement.services.TransactionService;
-
-//import java.util.List;
-
 import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -23,8 +16,6 @@ import org.springframework.validation.BindingResult;
 @SessionAttributes({ "transaction", "user" })
 public class TransactionFraudsController {
 
-    @Autowired
-    private TransactionRepository transactionRepository;
     @Autowired
     private TransactionService transactionService;
 
@@ -46,7 +37,7 @@ public class TransactionFraudsController {
             return "registration-forms/transaction-registration";
         }
 
-        transactionRepository.save(transaction);
+        transactionService.save(transaction);
 
         return "redirect:/transaction-fraud";
     }

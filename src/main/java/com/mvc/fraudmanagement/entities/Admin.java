@@ -3,21 +3,10 @@ package com.mvc.fraudmanagement.entities;
 import java.util.Date;
 
 import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
 
-@Entity
-@Table(name="admin")
 public class Admin {
-	
-	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
 
 	@Column(name = "first_name", nullable = false)
 	@Size(min=1, message="Enter at least 5 Characters...")
@@ -51,14 +40,6 @@ public class Admin {
     public Admin() {
     	super();
     }
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
 
 	public String getFirstName() {
 		return firstName;

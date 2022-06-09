@@ -2,12 +2,9 @@ package com.mvc.fraudmanagement.services;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.mvc.fraudmanagement.entities.Personnel;
-import com.mvc.fraudmanagement.entities.User;
 import com.mvc.fraudmanagement.repos.PersonnelRepository;
 
 @Service
@@ -20,6 +17,10 @@ public class PersonnelService {
 
 	public void getAllPersonnel() {
 		personnelList = personnelRepository.findAll();
+	}
+
+	public void save(Personnel personnel) {
+		personnelRepository.save(personnel);
 	}
 
 	public boolean isValidLogin(String userId, String password) {

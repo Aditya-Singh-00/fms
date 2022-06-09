@@ -2,10 +2,8 @@ package com.mvc.fraudmanagement.services;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.mvc.fraudmanagement.entities.Card;
 import com.mvc.fraudmanagement.repos.CardRepository;
 
@@ -18,6 +16,14 @@ public class CardService {
 
 	public void getAllCard() {
 		cardList = cardRepository.findAll();
+	}
+
+	public void save(Card card) {
+		cardRepository.save(card);
+	}
+
+	public void delete(Card card) {
+		cardRepository.delete(card);
 	}
 
 	public Card getCardById(int id) {
