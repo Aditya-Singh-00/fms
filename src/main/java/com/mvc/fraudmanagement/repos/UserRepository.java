@@ -41,12 +41,12 @@ public class UserRepository {
     }
 
     public List<User> findAll() {
-        return jdbcTemplate.query("select * from user", new UserMapper());
+        return jdbcTemplate.query("select * from users", new UserMapper());
     }
 
     public void save(User user) {
         jdbcTemplate.update(
-            "insert into user (" + 
+            "insert into users (" + 
                 "user_id, " + 
                 "first_name, " + 
                 "last_name, " + 
